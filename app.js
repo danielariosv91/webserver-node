@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import express from 'express';
 import hbs from 'hbs';
 import { fileURLToPath } from 'url';
@@ -7,11 +8,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
-const port = 8080;
+const port = process.env.PORT;
 
 
 /** Handlebars and partials */
-app.set('view engine', 'hbs'); 
+app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
 
 /** Public middleware:: static content */
