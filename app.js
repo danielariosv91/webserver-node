@@ -15,7 +15,10 @@ app.set('view engine', 'hbs')
 app.use(express.static('public'));
 
 app.get('/', (request, response) => {
-    response.render('home');
+    response.render('home', { 
+        title: 'Webserver Node App', 
+        name: 'danielariosv' 
+    });
 });
 
 app.get('/generic', (request, response) => {
