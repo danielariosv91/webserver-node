@@ -1,9 +1,13 @@
-/** Create server http */
-import http from 'http';
+import express from 'express';
+const app = express();
 
-http.createServer((request, response) => {
-    response.write("Hola Mundo");
-    response.end();
-}).listen(8080);
+app.get('/', (request, response) => {
+    response.send('Home');
+});
 
-console.log("Listen on 8080 port")
+app.get('/hello', (request, response) => {
+    response.send('Hello World');
+});
+
+app.listen(8080);
+console.log('Listen on 8080 port')
