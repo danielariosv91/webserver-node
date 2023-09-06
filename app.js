@@ -8,8 +8,15 @@ const __dirname = dirname(__filename);
 const app = express();
 const port = 8080;
 
+/** Handlebars */
+app.set('view engine', 'hbs')
+
 /** Public middleware:: static content */
 app.use(express.static('public'));
+
+app.get('/', (request, response) => {
+    response.render('home');
+});
 
 app.get('/generic', (request, response) => {
     response.sendFile(__dirname + '/public/generic.html');
