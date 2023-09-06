@@ -1,5 +1,10 @@
 import express from 'express';
+
 const app = express();
+const port = 8080;
+
+/** Public middleware:: static content */
+app.use(express.static('public'));
 
 app.get('/', (request, response) => {
     response.send('Home');
@@ -9,5 +14,10 @@ app.get('/hello', (request, response) => {
     response.send('Hello World');
 });
 
-app.listen(8080);
-console.log('Listen on 8080 port')
+app.get('*', (request, response) => {
+    response.send('404 page not found');
+});
+
+app.listen(port, () => {
+    console.log(`Listen on ${port} port`)
+});
